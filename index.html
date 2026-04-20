@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechNova | Premium Tech Solutions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables for Consistent Color Palette */
+        :root {
+            --primary-color: #0f172a; /* Deep Slate */
+            --secondary-color: #3b82f6; /* Modern Blue */
+            --accent-color: #10b981; /* Emerald Green */
+            --bg-light: #f8fafc;
+            --text-dark: #334155;
+            --text-light: #94a3b8;
+            --white: #ffffff;
+            --transition-speed: 0.3s;
+        }
+
+        /* Base Reset & Smooth Scrolling */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; overflow-x: hidden; }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0; left: 0; width: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .logo { color: var(--white); font-size: 1.8rem; font-weight: 800; letter-spacing: 1px; }
+        .logo span { color: var(--secondary-color); }
+        nav ul { list-style: none; display: flex; gap: 30px; }
+        nav ul li a {
+            color: var(--white); text-decoration: none; font-weight: 400; font-size: 1rem;
+            transition: color var(--transition-speed);
+        }
+        nav ul li a:hover { color: var(--secondary-color); }
+        .nav-cta { background: var(--secondary-color); padding: 8px 20px; border-radius: 20px; font-weight: 600; }
+        .nav-cta:hover { background: var(--white); color: var(--primary-color) !important; }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.9)), 
+                        url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1920&q=80') center/cover;
+            padding: 0 20px;
+        }
+        .hero-content { max-width: 800px; margin-top: 60px; animation: fadeIn 1s ease-out; }
+        .hero h1 { color: var(--white); font-size: 4rem; font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
+        .hero h1 span { color: var(--secondary-color); }
+        .hero p { color: var(--text-light); font-size: 1.2rem; margin-bottom: 30px; }
+        .btn-group { display: flex; gap: 20px; justify-content: center; }
+        .btn {
+            padding: 15px 35px; border-radius: 30px; text-decoration: none; font-size: 1.1rem; font-weight: 600;
+            transition: all var(--transition-speed); border: 2px solid transparent; cursor: pointer;
+        }
+        .btn-primary { background: var(--secondary-color); color: var(--white); box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4); }
+        .btn-primary:hover { background: transparent; border-color: var(--secondary-color); transform: translateY(-3px); }
+        .btn-outline { background: transparent; border-color: var(--white); color: var(--white); }
+        .btn-outline:hover { background: var(--white); color: var(--primary-color); transform: translateY(-3px); }
+
+        /* Section Global Styles */
+        section { padding: 100px 5%; }
+        .section-title { text-align: center; margin-bottom: 60px; }
+        .section-title h2 { font-size: 2.5rem; color: var(--primary-color); margin-bottom: 15px; }
+        .section-title p { color: var(--text-light); max-width: 600px; margin: 0 auto; }
+
+        /* Features Section (Grid & Boxes) */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        .feature-card {
+            background: var(--white); padding: 40px 30px; border-radius: 15px; text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: transform var(--transition-speed);
+            border-bottom: 4px solid transparent;
+        }
+        .feature-card:hover { transform: translateY(-10px); border-bottom-color: var(--secondary-color); }
+        .feature-icon {
+            font-size: 3rem; margin-bottom: 20px; background: var(--bg-light); 
+            width: 80px; height: 80px; line-height: 80px; border-radius: 50%; margin: 0 auto 20px;
+        }
+        .feature-card h3 { color: var(--primary-color); font-size: 1.5rem; margin-bottom: 15px; }
+        .feature-card p { color: var(--text-light); }
+
+        /* About / Content Section (Flexbox Layout) */
+        .about-section { background: var(--white); display: flex; align-items: center; gap: 60px; flex-wrap: wrap; }
+        .about-image { flex: 1; min-width: 300px; position: relative; }
+        .about-image img { width: 100%; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .about-text { flex: 1; min-width: 300px; }
+        .about-text h2 { font-size: 2.5rem; color: var(--primary-color); margin-bottom: 20px; }
+        .about-text p { color: var(--text-dark); margin-bottom: 20px; font-size: 1.1rem; }
+        .check-list { list-style: none; margin-bottom: 30px; }
+        .check-list li { margin-bottom: 10px; font-weight: 600; color: var(--primary-color); display: flex; align-items: center; gap: 10px; }
+        .check-list li::before { content: "✔"; color: var(--accent-color); font-size: 1.2rem; }
+
+        /* Call to Action */
+        .cta { background: var(--secondary-color); text-align: center; color: var(--white); padding: 80px 5%; }
+        .cta h2 { font-size: 2.5rem; margin-bottom: 20px; }
+        .cta p { font-size: 1.2rem; margin-bottom: 30px; opacity: 0.9; }
+
+        /* Footer */
+        footer { background: var(--primary-color); color: var(--text-light); padding: 60px 5% 20px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; }
+        .footer-col h3 { color: var(--white); margin-bottom: 20px; font-size: 1.2rem; }
+        .footer-col p, .footer-col a { color: var(--text-light); text-decoration: none; display: block; margin-bottom: 10px; transition: color var(--transition-speed); }
+        .footer-col a:hover { color: var(--secondary-color); }
+        .footer-bottom { text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); }
+
+        /* Animations & Media Queries */
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .btn-group { flex-direction: column; }
+            nav ul { display: none; /* Hide on mobile for simplicity, or add hamburger menu logic */ }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Tech<span>Nova</span></div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Building the <span>Future</span> with Clean Code</h1>
+            <p>Empowering businesses with modern web architecture, responsive design, and robust logic-driven applications.</p>
+            <div class="btn-group">
+                <a href="#features" class="btn btn-primary">Explore Services</a>
+                <a href="#about" class="btn btn-outline">Our Story</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="features">
+        <div class="section-title">
+            <h2>Our Core Competencies</h2>
+            <p>We deliver high-quality digital products by blending technical expertise with creative problem-solving.</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">💻</div>
+                <h3>Responsive Layouts</h3>
+                <p>Fluid grids and flexible images ensuring your website looks stunning on any device, from mobile to 4K displays.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚙️</div>
+                <h3>System Architecture</h3>
+                <p>Strong foundation in C Programming and logic design to build scalable and efficient software systems.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🚀</div>
+                <h3>Modern Web Tech</h3>
+                <p>Leveraging HTML5, CSS3, and JavaScript to create interactive, fast, and secure user experiences.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="about-image">
+            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" alt="Team Collaboration">
+        </div>
+        <div class="about-text">
+            <h2>Driven by Logic. Designed for Users.</h2>
+            <p>As a passionate BSc student and developer, I focus on bridging the gap between complex backend logic and seamless frontend design.</p>
+            <ul class="check-list">
+                <li>Clean, well-documented codebase</li>
+                <li>Pixel-perfect UI implementation</li>
+                <li>Optimized for performance and speed</li>
+            </ul>
+            <a href="#contact" class="btn btn-primary">Learn More</a>
+        </div>
+    </section>
+
+    <section class="cta">
+        <h2>Ready to start your next project?</h2>
+        <p>Let's collaborate to build something extraordinary together.</p>
+        <a href="#contact" class="btn btn-outline" style="border-color: white; color: var(--primary-color); background: white;">Contact Shrutika</a>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>TechNova</h3>
+                <p>A professional web development project focusing on industry best practices and clean design architecture.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <a href="#home">Home</a>
+                <a href="#features">Services</a>
+                <a href="#about">About Me</a>
+            </div>
+            <div class="footer-col">
+                <h3>Contact</h3>
+                <p>Email: chokhandreshrutika@gmail.com</p>
+                <p>Phone: +91 9527412076</p>
+                <p>Location: Maharashtra, India</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 TechNova | Developed by Shrutika Chokhandre.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
